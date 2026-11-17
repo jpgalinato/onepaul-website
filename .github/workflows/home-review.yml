@@ -1,0 +1,21 @@
+name: Onepaul homepage smoke tests
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'home-redesign.css'
+      - 'home-redesign.js'
+      - 'functions/api/**'
+      - 'tests/**'
+      - '.github/workflows/home-review.yml'
+  workflow_dispatch:
+jobs:
+  home-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run source smoke tests
+        run: node --test tests/home-smoke.test.mjs
