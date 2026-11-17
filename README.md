@@ -1,22 +1,47 @@
-# Onepaul Website — Contemporary Human
+# Onepaul | Multi-page Website Preview
 
-A static website **preview** for Onepaul's dedicated offshore staffing proposition. Built for Cloudflare Pages from a GitHub repository.
+A 14-page static Onepaul site using the **Contemporary Human** brand identity: forest green, lime, ivory, Sora, Inter and tagline-free vector branding.
 
-## Design
-- Forest green `#0F3D32`, lime `#B6F264`, ivory `#F7F4EB`, charcoal.
-- Sora headings, Inter body.
-- Approved tagline-free Onepaul vector wordmark and brandmark.
-- Stock photography is illustrative only, not represented as Onepaul employees.
+## Sitemap
 
-## Preview / deploy
-Set Cloudflare Pages to connect to this repo's `main` branch, use **no framework**, **no build command**, and output directory `/` (repository root). This site can be previewed on `*.pages.dev` while the existing `onepaul.net` remains unchanged.
+- `/` — Home
+- `/about/` — About
+  - `/about/team/` — Our Team
+  - `/about/solutions/` — Our Solutions
+  - `/about/industries/` — Industries We Support
+    - `/about/industries/technology-startups/`
+    - `/about/industries/finance-accounting/`
+    - `/about/industries/health-insurance/`
+  - `/about/disciplines/` — Our Disciplines
+- `/resources/` — Resources
+  - `/resources/articles/` — Articles & Insights
+  - `/resources/case-studies/` — Case Studies
+  - `/resources/team-builder/` — Team Builder & Calculator
+- `/careers/` — Careers
 
-## Before launch
-- Replace the stock photographs with licensed and consented photographs of Onepaul professionals.
-- Rebuild or recover the previous site's interactive pricing calculator, resource pages and secure enquiry submission.
-- Validate the US$500 fee and associated commercial terms.
-- Add privacy policy, terms and any legally required details.
-- Test keyboard navigation, browser/mobile behaviour, SEO and security.
-- Only then switch the custom domain after stakeholder approval.
+## Hosting
 
-This is a preview and the CTA currently sends visitors to the existing website for contact. No enquiry is collected by the new preview site.
+Cloudflare Pages from branch `main`. Framework: **None**, build command: **blank**, output directory: **/**. Each page is an `index.html` file under its own folder.
+
+The new site should be reviewed at its Cloudflare `pages.dev` address before switching the production domain.
+
+## Functional scope
+
+- Shared responsive navigation with expandable About and Resources menus.
+- Indicative team calculator in `script.js` with inputs for headcount, gross monthly salary, additional employer cost percentage, allowances and editable assumed PHP/USD rate. Uses **US$500 per person/month** as the Onepaul fee; this must be reverified before launch.
+- The site does **not** process leads or applications. Existing-site contact button is used pending verified enquiry integration.
+- Case studies and team profiles explicitly await verified, approved content.
+- Careers currently does not advertise vacancies or collect candidate details.
+- Some photography is illustrative external stock photography, not actual Onepaul professionals.
+
+## Before production cutover
+
+1. Approve real people portraits and licences.
+2. Verify commercial and employment terms, including the fee model.
+3. Rebuild or recover the existing pricing calculator if all original features are required.
+4. Connect a secure contact form, privacy terms, and recruitment listings.
+5. Approve team biographies and verified case studies.
+6. Test all pages, calculations, navigation, SEO, accessibility and mobile responsiveness on the Cloudflare preview.
+7. Preserve the existing deployment and prepare rollback before changing `onepaul.net`.
+
+See `DEPLOYMENT.md` for Cloudflare configuration.
