@@ -79,3 +79,7 @@ body{background:var(--paper);line-height:1.65}
 .page-cta h2{grid-row:auto}
 .feature-article{padding:25px}
 }
+
+/* Current location indicator */
+.nav nav a[aria-current="page"]:not(.nav-action),.nav-dropdown>a.section-active{color:#0c4936;font-weight:800;background:#e8f0dd}
+.nav .submenu a[aria-current="page"]{background:#e8f0dd;color:#0c4936;font-weight:800}
