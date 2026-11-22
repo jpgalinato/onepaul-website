@@ -111,3 +111,11 @@ body{background:var(--paper);line-height:1.65}
 .header #nav-menu{gap:1px}
 .header #nav-menu>.nav-action{font-size:.75rem!important;padding:10px 11px!important}
 }
+
+/* Homepage process: a single reveal per step, without hiding content when JS is unavailable. */
+#process.process-motion .steps>article{position:relative;border-top-color:transparent}
+#process.process-motion .steps>article::before{content:"";position:absolute;top:-2px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--lime));transform:scaleX(0);transform-origin:left;transition:transform .75s cubic-bezier(.22,1,.36,1) var(--step-delay,0ms)}
+#process.process-motion .steps>article.is-visible::before{transform:scaleX(1)}
+#process .steps>article>b{display:inline-block;transform-origin:center}
+@media(prefers-reduced-motion:reduce){#process.process-motion .steps>article::before{transform:none;transition:none}}
+@media print{#process.process-motion .steps>article::before{transform:none;transition:none}}
