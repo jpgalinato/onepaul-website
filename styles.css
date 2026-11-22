@@ -119,3 +119,28 @@ body{background:var(--paper);line-height:1.65}
 #process .steps>article>b{display:inline-block;transform-origin:center}
 @media(prefers-reduced-motion:reduce){#process.process-motion .steps>article::before{transform:none;transition:none}}
 @media print{#process.process-motion .steps>article::before{transform:none;transition:none}}
+
+/* Hand-drawn process icons: individual motions follow the existing scroll reveal. */
+#process .process-visual{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:2px 0 20px}
+#process .process-icon{display:grid;place-items:center;width:84px;height:84px;flex:0 0 84px;background:#e8f0dd;border:1px solid #d5e2c8;border-radius:22px;color:var(--green);overflow:visible}
+#process .process-icon svg{display:block;width:62px;height:62px;overflow:visible}
+#process .process-visual>b{font-size:1.05rem;letter-spacing:.06em;color:#526b57}
+#process .steps h3{margin-top:0}
+#process.process-motion .is-visible .brief-line{stroke-dasharray:1;animation:op-icon-draw .6s ease both;animation-delay:calc(var(--step-delay,0ms) + 180ms)}
+#process.process-motion .is-visible .brief-line.line-2{animation-delay:calc(var(--step-delay,0ms) + 380ms)}
+#process.process-motion .is-visible .brief-line.line-3{animation-delay:calc(var(--step-delay,0ms) + 580ms)}
+#process.process-motion .is-visible .candidate{animation:op-profile-arrive .7s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--step-delay,0ms) + 150ms);transform-box:fill-box;transform-origin:center}
+#process.process-motion .is-visible .candidate-right{animation-delay:calc(var(--step-delay,0ms) + 350ms)}
+#process.process-motion .is-visible .candidate-link{stroke-dasharray:1;animation:op-icon-draw .65s ease both;animation-delay:calc(var(--step-delay,0ms) + 600ms)}
+#process.process-motion .is-visible .agreement-pen{animation:op-sign .9s ease-in-out both;animation-delay:calc(var(--step-delay,0ms) + 200ms);transform-box:fill-box;transform-origin:center}
+#process.process-motion .is-visible .agreement-check{stroke-dasharray:1;animation:op-icon-draw .5s ease both;animation-delay:calc(var(--step-delay,0ms) + 700ms)}
+#process.process-motion .is-visible .team-person{animation:op-team-pop .6s cubic-bezier(.22,1,.36,1) both;transform-box:fill-box;transform-origin:center;animation-delay:calc(var(--step-delay,0ms) + 120ms)}
+#process.process-motion .is-visible .person-two{animation-delay:calc(var(--step-delay,0ms) + 300ms)}
+#process.process-motion .is-visible .person-three{animation-delay:calc(var(--step-delay,0ms) + 480ms)}
+#process.process-motion .is-visible .team-link{stroke-dasharray:1;animation:op-icon-draw .8s ease both;animation-delay:calc(var(--step-delay,0ms) + 650ms)}
+@keyframes op-icon-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes op-profile-arrive{from{opacity:0;transform:translateY(8px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes op-sign{0%{transform:translate(4px,-4px) rotate(-8deg)}45%{transform:translate(-2px,2px) rotate(4deg)}70%{transform:translate(1px,-1px)}100%{transform:none}}
+@keyframes op-team-pop{0%{opacity:0;transform:scale(.65)}70%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){#process .process-icon svg *{animation:none!important;stroke-dashoffset:0!important;opacity:1!important;transform:none!important}}
+@media print{#process .process-icon svg *{animation:none!important;stroke-dashoffset:0!important;opacity:1!important;transform:none!important}}
