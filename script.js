@@ -64,3 +64,28 @@ const calc=document.getElementById('team-calculator');if(calc){const ids=['roles
   window.addEventListener('beforeprint',stop);
  }catch{stop();}
 })();
+
+/* Run liquid loops only in view; never override an explicit pause choice. */
+(()=>{
+ const section=document.querySelector('#process');
+ if(!section)return;
+ const icons=[...section.querySelectorAll('.process-metaball')];
+ const button=section.querySelector('.process-motion-toggle');
+ if(!icons.length||!button||!('IntersectionObserver'in window))return;
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const visibility=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>entry.target.classList.toggle('is-in-view',entry.isIntersecting));
+ },{threshold:.05});
+ icons.forEach(icon=>visibility.observe(icon));
+ const updatePreference=()=>{button.hidden=reduced.matches;};
+ updatePreference();
+ reduced.addEventListener('change',updatePreference);
+ button.addEventListener('click',()=>{
+  const paused=section.classList.toggle('process-animation-paused');
+  button.setAttribute('aria-pressed',String(paused));
+  button.textContent=paused?'Resume animation':'Pause animation';
+ });
+ const updateTab=()=>section.classList.toggle('process-tab-hidden',document.hidden);
+ updateTab();
+ document.addEventListener('visibilitychange',updateTab);
+})();
