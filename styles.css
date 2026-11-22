@@ -120,27 +120,42 @@ body{background:var(--paper);line-height:1.65}
 @media(prefers-reduced-motion:reduce){#process.process-motion .steps>article::before{transform:none;transition:none}}
 @media print{#process.process-motion .steps>article::before{transform:none;transition:none}}
 
-/* Hand-drawn process icons: individual motions follow the existing scroll reveal. */
-#process .process-visual{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:2px 0 20px}
-#process .process-icon{display:grid;place-items:center;width:84px;height:84px;flex:0 0 84px;background:#e8f0dd;border:1px solid #d5e2c8;border-radius:22px;color:var(--green);overflow:visible}
-#process .process-icon svg{display:block;width:62px;height:62px;overflow:visible}
+
+/* Logo-inspired liquid metaballs. Two gentle cycles, then settle. */
+#process .process-visual{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 18px}
+#process .process-metaball{display:block;width:112px;height:112px;flex:0 0 112px;background:#edf2e5;border-radius:28px}
+#process .process-metaball svg{display:block;width:100%;height:100%;overflow:visible}
 #process .process-visual>b{font-size:1.05rem;letter-spacing:.06em;color:#526b57}
 #process .steps h3{margin-top:0}
-#process.process-motion .is-visible .brief-line{stroke-dasharray:1;animation:op-icon-draw .6s ease both;animation-delay:calc(var(--step-delay,0ms) + 180ms)}
-#process.process-motion .is-visible .brief-line.line-2{animation-delay:calc(var(--step-delay,0ms) + 380ms)}
-#process.process-motion .is-visible .brief-line.line-3{animation-delay:calc(var(--step-delay,0ms) + 580ms)}
-#process.process-motion .is-visible .candidate{animation:op-profile-arrive .7s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--step-delay,0ms) + 150ms);transform-box:fill-box;transform-origin:center}
-#process.process-motion .is-visible .candidate-right{animation-delay:calc(var(--step-delay,0ms) + 350ms)}
-#process.process-motion .is-visible .candidate-link{stroke-dasharray:1;animation:op-icon-draw .65s ease both;animation-delay:calc(var(--step-delay,0ms) + 600ms)}
-#process.process-motion .is-visible .agreement-pen{animation:op-sign .9s ease-in-out both;animation-delay:calc(var(--step-delay,0ms) + 200ms);transform-box:fill-box;transform-origin:center}
-#process.process-motion .is-visible .agreement-check{stroke-dasharray:1;animation:op-icon-draw .5s ease both;animation-delay:calc(var(--step-delay,0ms) + 700ms)}
-#process.process-motion .is-visible .team-person{animation:op-team-pop .6s cubic-bezier(.22,1,.36,1) both;transform-box:fill-box;transform-origin:center;animation-delay:calc(var(--step-delay,0ms) + 120ms)}
-#process.process-motion .is-visible .person-two{animation-delay:calc(var(--step-delay,0ms) + 300ms)}
-#process.process-motion .is-visible .person-three{animation-delay:calc(var(--step-delay,0ms) + 480ms)}
-#process.process-motion .is-visible .team-link{stroke-dasharray:1;animation:op-icon-draw .8s ease both;animation-delay:calc(var(--step-delay,0ms) + 650ms)}
-@keyframes op-icon-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
-@keyframes op-profile-arrive{from{opacity:0;transform:translateY(8px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes op-sign{0%{transform:translate(4px,-4px) rotate(-8deg)}45%{transform:translate(-2px,2px) rotate(4deg)}70%{transform:translate(1px,-1px)}100%{transform:none}}
-@keyframes op-team-pop{0%{opacity:0;transform:scale(.65)}70%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
-@media(prefers-reduced-motion:reduce){#process .process-icon svg *{animation:none!important;stroke-dashoffset:0!important;opacity:1!important;transform:none!important}}
-@media print{#process .process-icon svg *{animation:none!important;stroke-dashoffset:0!important;opacity:1!important;transform:none!important}}
+#process .liquid-node{transform-box:fill-box;transform-origin:center}
+#process.process-motion .is-visible .liquid-node{animation-duration:2.2s;animation-timing-function:cubic-bezier(.45,0,.25,1);animation-iteration-count:2;animation-fill-mode:both;animation-delay:var(--step-delay,0ms)}
+#process.process-motion .is-visible .liquid-brief-a{animation-name:op-liquid-brief-a}
+#process.process-motion .is-visible .liquid-brief-b{animation-name:op-liquid-breathe}
+#process.process-motion .is-visible .liquid-brief-c{animation-name:op-liquid-brief-c}
+#process.process-motion .is-visible .liquid-brief-dot{animation-name:op-liquid-brief-dot}
+#process.process-motion .is-visible .liquid-meet-left{animation-name:op-liquid-meet-left}
+#process.process-motion .is-visible .liquid-meet-right{animation-name:op-liquid-meet-right}
+#process.process-motion .is-visible .liquid-meet-top{animation-name:op-liquid-meet-top}
+#process.process-motion .is-visible .liquid-agree-left{animation-name:op-liquid-agree-left}
+#process.process-motion .is-visible .liquid-agree-right{animation-name:op-liquid-agree-right}
+#process.process-motion .is-visible .liquid-agree-dot{animation-name:op-liquid-agree-dot}
+#process.process-motion .is-visible .liquid-team-a{animation-name:op-liquid-team-a}
+#process.process-motion .is-visible .liquid-team-b{animation-name:op-liquid-team-b}
+#process.process-motion .is-visible .liquid-team-c{animation-name:op-liquid-team-c}
+#process.process-motion .is-visible .liquid-team-d{animation-name:op-liquid-team-d}
+@keyframes op-liquid-brief-a{0%,100%{transform:none}45%,55%{transform:translate(0,17px) scale(1.06)}}
+@keyframes op-liquid-brief-c{0%,100%{transform:none}45%,55%{transform:translate(0,-17px) scale(1.06)}}
+@keyframes op-liquid-breathe{0%,100%{transform:none}50%{transform:scale(1.3)}}
+@keyframes op-liquid-brief-dot{0%,100%{transform:none}45%,55%{transform:translate(-18px,17px) scale(.9)}}
+@keyframes op-liquid-meet-left{0%,100%{transform:none}45%,55%{transform:translate(13px,0) scale(1.05)}}
+@keyframes op-liquid-meet-right{0%,100%{transform:none}45%,55%{transform:translate(-13px,0) scale(1.05)}}
+@keyframes op-liquid-meet-top{0%,100%{transform:none}45%,55%{transform:translate(0,17px)}}
+@keyframes op-liquid-agree-left{0%,100%{transform:none}45%,55%{transform:translate(13px,4px)}}
+@keyframes op-liquid-agree-right{0%,100%{transform:none}45%,55%{transform:translate(-13px,4px)}}
+@keyframes op-liquid-agree-dot{0%,100%{transform:none}45%,55%{transform:translate(0,17px) scale(.9)}}
+@keyframes op-liquid-team-a{0%,100%{transform:none}45%,55%{transform:translate(10px,10px) scale(1.1)}}
+@keyframes op-liquid-team-b{0%,100%{transform:none}45%,55%{transform:translate(-10px,10px) scale(1.1)}}
+@keyframes op-liquid-team-c{0%,100%{transform:none}45%,55%{transform:translate(10px,-10px) scale(1.1)}}
+@keyframes op-liquid-team-d{0%,100%{transform:none}45%,55%{transform:translate(-10px,-10px) scale(1.1)}}
+@media(prefers-reduced-motion:reduce){#process .liquid-node{animation:none!important;transform:none!important}}
+@media print{#process .liquid-node{animation:none!important;transform:none!important}}
